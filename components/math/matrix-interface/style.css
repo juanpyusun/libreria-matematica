@@ -8,16 +8,55 @@
     box-sizing: border-box;
     /*border: 1px solid red;*/
 }
+
 .container {
     font-family: Arial, sans-serif;
-    font-weight: bold;
-    display: grid;
+    padding: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
-        background-color: transparent;
-    height: 20vh;
+    height: 100vh;
+    background-color: transparent;
 }
 
 /*-------------------------------------------------------------------------------------------------------------------
    UI-components.
 -------------------------------------------------------------------------------------------------------------------*/
+
+.matrix-helper {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.matrix {
+    padding: 10px;
+    border-left: 2px solid red;
+    /* For visualization */
+    border-right: 2px solid red;
+    /* For visualization */
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.matrix-input {
+    margin: 10px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+
+}
+
+#incrementarDimension {
+    margin-right: 10px;
+}
+
+#decrementarDimension {
+    margin-left: 10px;
+}
