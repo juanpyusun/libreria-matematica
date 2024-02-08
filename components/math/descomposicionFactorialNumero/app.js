@@ -19,7 +19,7 @@ function factorizar(numero){
 
 /* Listeners*/
 
-document.getElementById("btnFactorizar").addEventListener("click", () => {
+document.getElementById("btnAccion").addEventListener("click", () => {
     let numero = document.getElementById("inputNumber").value;
     let message = factorizar(numero);
     message = message.map((element) => {
@@ -28,4 +28,4 @@ document.getElementById("btnFactorizar").addEventListener("click", () => {
     escribirTxtArea(message);
 
 });
-document.getElementById("btnFactorizar").addEventListener("dblclick", borrarTxtArea);
+document.getElementById("btnAccion").addEventListener("dblclick", borrarTxtArea);
