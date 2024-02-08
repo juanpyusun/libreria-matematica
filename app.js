@@ -1,17 +1,18 @@
 /* Variables y constantes*/
 const VAR_TEMP = "x";
+
 let contadorClicks = {
     A: 1,
     B: 1
 };
-let limitesDimensiones = {
+const LIMITES_DIMENSIONES = {
     MAXIMA: 5,
     MINIMA: 1
 };
 
 /* Functions*/
 function incrementarDimension(id) {
-    if (contadorClicks[id] >= limitesDimensiones.MAXIMA) {
+    if (contadorClicks[id] >= LIMITES_DIMENSIONES.MAXIMA) {
         return;
     }
     contadorClicks[id]++;
@@ -19,7 +20,7 @@ function incrementarDimension(id) {
 }
 
 function reducirDimension(id) {
-    if (contadorClicks[id] <= limitesDimensiones.MINIMA) {
+    if (contadorClicks[id] <= LIMITES_DIMENSIONES.MINIMA) {
         return;
     }
     contadorClicks[id]--;
@@ -81,7 +82,8 @@ function descomponerToArrayWithDictionary(polinomio){
         };
         // Analizar cada término y crear un diccionario
         let signo = termino[0] === '-' ? '-' : '+';
-        let coeficiente = termino[0] === '-' ? termino.match(/[+-]?\d+/)[0][1] : termino.match(/[+-]?\d+/)[0];
+
+        let coeficiente = termino[0] === '-' ? Math.abs(termino.match(/[+-]?\d+/)[0]) : termino.match(/[+-]?\d+/)[0];
         let variable = termino.match(/[a-zA-Z]/);
         let exponente = termino.match(/\^(\d+)/);
         
@@ -103,35 +105,47 @@ function descomponerToArrayWithDictionary(polinomio){
     //return terminos; para devolver el arreglo de diccionarios
 }
 
-function invocarDescomposicionTerminos() {
-    let message = `<div class="row"><input type="text" id="inputNumber" placeholder="Ingrese una expresión"><button id="btnAccion-descomponer">Descomponer</button></div><textarea id="txtResultado"></textarea>`;
+function invocarUIFactorizar() {
+    let message = `<div class="row">
+                        <input type="number" id="inputNumber" placeholder="Ingrese una numero">
+                        <button id="btnAccion-factorizar">Factorizar</button>
+                    </div>
+                    <textarea id="txtResultado"></textarea>`;
+    return message;
+}
+function invocarUIDescomponer() {
+    let message = `<div class="row">
+                        <input type="text" id="inputNumber" placeholder="Ingrese una expresión">
+                        <button id="btnAccion-descomponer">Descomponer</button>
+                    </div>
+                    <textarea id="txtResultado"></textarea>`;
+    return message;
+}
+
+function invocarUIMatrices(letra) {
+    let message = `<article class="matrix-container">
+                        <section class="matrix" id="matrix${letra}"></section>
+                        <section class="matrix-helper">
+                            <button id="btnAccion-incrementarDimension">+</button>
+                            <button id="btnAccion-reducirDimension">-</button>
+                        </section>
+                    </article>`;
     return message;
 }
 
 /* Listeners*/
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById('main').innerHTML = invocarDescomposicionTerminos();
-    document.getElementById("main").style.display = "grid";
-    document.getElementById("btnAccion-descomponer").addEventListener("click", () => {
-        let expresion = document.getElementById("inputNumber").value;
-        expresion = descomponer(expresion);
-        expresion = descomponerToArrayWithDictionary(expresion);
-        document.getElementById("txtResultado").innerHTML = expresion; 
-    });
-    document.getElementById("btnAccion-descomponer").addEventListener("dblclick", () => {
-        document.getElementById("txtResultado").innerHTML = "";
-    });
+/* Listener LOAD*/
+document.addEventListener("load", function () {
+    document.getElementById('main').innerHTML = `<img src="Muñeco.png" alt="">`;
 });
 
-/*
-function invocarDescomposicionFactorialNumero() {
-    let message = `<div class="row"><input type="number" id="inputNumber" placeholder="Ingrese un número"><button id="btnAccion-factorizar">Factorizar</button></div><textarea id="txtResultado"></textarea>`;
-    return message;
-}
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById('main').innerHTML = invocarDescomposicionFactorialNumero();
+/* Listener click en link factorizacion*/
+document.getElementById("link-factorizacion").addEventListener("click", function () {
+    document.getElementById('main').innerHTML = "";
+    document.getElementById('main').innerHTML = invocarUIFactorizar();
     document.getElementById("main").style.display = "grid";
-    
+    document.title = "Factorización de números";
+
     document.getElementById("btnAccion-factorizar").addEventListener("click", () => {
         let numero = document.getElementById("inputNumber").value;
         let message = factorizar(numero);
@@ -144,25 +158,42 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("btnAccion-factorizar").addEventListener("dblclick", () => {
         document.getElementById("txtResultado").innerHTML = "";
     });
+});
+
+/* Listener click en link descomposicion*/
+document.getElementById("link-descomposicion").addEventListener("click", function () {
+    document.getElementById('main').innerHTML = "";
+    document.getElementById('main').innerHTML = invocarUIDescomponer();
+    document.getElementById("main").style.display = "grid";
+    document.title = "Descomposición de polinomios";
+
+    document.getElementById("btnAccion-descomponer").addEventListener("click", () => {
+        let expresion = document.getElementById("inputNumber").value;
+        expresion = descomponer(expresion);
+        expresion = descomponerToArrayWithDictionary(expresion);
+        document.getElementById("txtResultado").innerHTML = expresion; 
+    });
+
+    document.getElementById("btnAccion-descomponer").addEventListener("dblclick", () => {
+        document.getElementById("txtResultado").innerHTML = "";
+    });
+
 
 });
 
+/* Listener click en link matrix*/
+document.getElementById("link-matrix").addEventListener("click", function () {
+    document.getElementById('main').innerHTML = "";
+    document.getElementById('main').innerHTML = invocarUIMatrices("A");
 
-function invocarMatrix(letra) {
-    let message = `<article class="matrix-container"><section class="matrix" id="matrix${letra}"></section><section class="matrix-helper"><button id="btnAccion-incrementarDimension">+</button><button id="btnAccion-reducirDimension">-</button></section></article>`;
-    return message;
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById('main').innerHTML = invocarMatrix("A");
-    document.getElementById("container").style.display = "flex";
     dibujarMatrix('A', contadorClicks.A);
+    document.title = "Operaciones con matrices";
+
     document.getElementById("btnAccion-incrementarDimension").addEventListener("click", () => {
         incrementarDimension('A');
     });
+
     document.getElementById("btnAccion-reducirDimension").addEventListener("click", () => {
         reducirDimension('A'); 
     });
 });
-
-*/

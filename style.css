@@ -48,8 +48,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    height: 10vh;
-
 }
 
 .matrix-input {
@@ -98,45 +96,24 @@
     resize: none;
 }
 
-
-/*---------------------------------------------*/
-.menu ul {
+.menuNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+.menuNav ul {   /* los ul dentro de una clase llamada menuNav */
     list-style-type: none;
     padding: 0;
 }
 
-.menu ul li {
-    display: inline-block;
-    position: relative;
+.menuNav ul li { /* los li dentro de un ul dentros de una clase llamada menuNav */
+    display: inline-block; /* Para que los elementos se muestren en línea */
+    margin: 0 5vw; /* Para dar un margen a los elementos */
 }
 
-.menu ul li a {
-    display: block;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #333;
+.menuNav ul li a { /* los a dentro de un li dentro de un ul dentro de una clase llamada menuNav */
+    text-decoration: none;  /* Para quitar el subrayado de los enlaces */
+    color: #333; /* Color del texto */
 }
 
-.menu ul li:hover > .submenu-content {
-    display: block;
-}
-
-.submenu-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.submenu-content li {
-    display: block;
-}
-
-.submenu-content li a {
-    padding: 10px 20px;
-    color: #333;
-}
-
-.submenu-content li:hover {
-    background-color: #ddd;
-}
