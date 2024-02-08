@@ -1,4 +1,4 @@
-/* Variables y constantes*/
+/*  VARIABLES Y CONSTANTES -----------------------------------------------------------*/
 const VAR_TEMP = "x";
 
 let contadorClicks = {
@@ -10,7 +10,7 @@ const LIMITES_DIMENSIONES = {
     MINIMA: 1
 };
 
-/* Functions*/
+/*  FUNCIONES -----------------------------------------------------------*/
 function incrementarDimension(id) {
     if (contadorClicks[id] >= LIMITES_DIMENSIONES.MAXIMA) {
         return;
@@ -47,31 +47,31 @@ function dibujarMatrix(id, dimension) {
     }
 }
 
-function factorizar(numero){
+function factorizar(numero) {
     let resultado = [];
-    for(let i = 1; i <= numero; i++ ){
-        if(numero % i == 0){
+    for (let i = 1; i <= numero; i++) {
+        if (numero % i == 0) {
             resultado.push(i);
-        }    
+        }
     }
     return resultado;
 }
 
-function descomponer(polinomio){
+function descomponer(polinomio) {
     // Expresión regular para encontrar términos
     let regex = /\s?([+-])\s?/g;
-    resultado = polinomio.replace(regex, (match, group1) => group1 === '-' ? ' -' : ' ').split(/\s+/);    
+    resultado = polinomio.replace(regex, (match, group1) => group1 === '-' ? ' -' : ' ').split(/\s+/);
     return resultado;
 }
 
-function descomponerToString(polinomio){
+function descomponerToString(polinomio) {
     return polinomio.join("\n");
 }
 
-function descomponerToArrayWithDictionary(polinomio){
+function descomponerToArrayWithDictionary(polinomio) {
     let terminos = [];
-    for(let termino of polinomio){
-        if (termino === ""){
+    for (let termino of polinomio) {
+        if (termino === "") {
             continue;
         }
         let dictionary = {
@@ -86,7 +86,7 @@ function descomponerToArrayWithDictionary(polinomio){
         let coeficiente = termino[0] === '-' ? Math.abs(termino.match(/[+-]?\d+/)[0]) : termino.match(/[+-]?\d+/)[0];
         let variable = termino.match(/[a-zA-Z]/);
         let exponente = termino.match(/\^(\d+)/);
-        
+
         exponente = exponente ? exponente[1] : 1;
         exponente = variable ? exponente : 0;
         variable = variable ? variable[0] : VAR_TEMP;
@@ -98,13 +98,14 @@ function descomponerToArrayWithDictionary(polinomio){
         terminos.push(dictionary);
     }
     let message = "";
-    for(let termino of terminos){
+    for (let termino of terminos) {
         message += ` ${termino.signo}${termino.coeficiente}${termino.variable}↑${termino.exponente}\n`;
     }
     return message; // para devolver el string
     //return terminos; para devolver el arreglo de diccionarios
 }
 
+/*  INVOCADORES UI -----------------------------------------------------------*/
 function invocarUIFactorizar() {
     let message = `<div class="row">
                         <input type="number" id="inputNumber" placeholder="120">
@@ -132,8 +133,7 @@ function invocarUIMatrices(letra) {
                     </article>`;
     return message;
 }
-
-/* Listeners*/
+/*  LISTENERS -----------------------------------------------------------*/
 /* Listener LOAD*/
 document.addEventListener("load", function () {
     document.getElementById('main').innerHTML = `<img src="Muñeco.png" alt="">`;
@@ -150,9 +150,9 @@ document.getElementById("link-factorizacion").addEventListener("click", function
         let numero = document.getElementById("inputNumber").value;
         let message = factorizar(numero);
         message = message.map((element) => {
-            return "  "+ element + "  ";
+            return "  " + element + "  ";
         });
-        document.getElementById("txtResultado").innerHTML = message;    
+        document.getElementById("txtResultado").innerHTML = message;
     });
 
     document.getElementById("btnAccion-factorizar").addEventListener("dblclick", () => {
@@ -171,7 +171,7 @@ document.getElementById("link-descomposicion").addEventListener("click", functio
         let expresion = document.getElementById("inputNumber").value;
         expresion = descomponer(expresion);
         expresion = descomponerToArrayWithDictionary(expresion);
-        document.getElementById("txtResultado").innerHTML = expresion; 
+        document.getElementById("txtResultado").innerHTML = expresion;
     });
 
     document.getElementById("btnAccion-descomponer").addEventListener("dblclick", () => {
@@ -194,6 +194,6 @@ document.getElementById("link-matrix").addEventListener("click", function () {
     });
 
     document.getElementById("btnAccion-reducirDimension").addEventListener("click", () => {
-        reducirDimension('A'); 
+        reducirDimension('A');
     });
 });
