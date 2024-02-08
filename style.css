@@ -1,0 +1,31 @@
+:root{
+    --cornflower-blue-50: #eff7fe;
+    --cornflower-blue-100: #e2effd;
+    --cornflower-blue-200: #cbe1fa;
+    --cornflower-blue-300: #acccf5;
+    --cornflower-blue-400: #8baeee;
+    --cornflower-blue-500: #7192e6;
+    --cornflower-blue-600: #536fd8;
+    --cornflower-blue-700: #445bbe;
+    --cornflower-blue-800: #394c9a;
+    --cornflower-blue-900: #35457a;
+    --cornflower-blue-950: #1f2747;
+
+    /* Primary */
+
+    /* Secondary */
+
+    /* Tertiary */
+
+    /* White */
+    --white: var(--cornflower-blue-50);
+    /* Black */
+     --black: var(--cornflower-blue-950);
+}
+
+.menuNav {
+    position: relative;
+    height: 10vh;
+    width: 100vw;
+    background-color: var(--black);
+}
