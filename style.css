@@ -1,0 +1,142 @@
+/*-------------------------------------------------------------------------------------------------------------------
+   CONFIGURATION.
+-------------------------------------------------------------------------------------------------------------------*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    /*border: 1px solid red;*/
+}
+
+.container {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: transparent;
+    
+}
+.container.has-factorizar {
+    /* Estilos que deseas aplicar cuando el contenedor tiene un nieto con id factorizar */
+    background-color: lightblue;
+}
+
+
+/*-------------------------------------------------------------------------------------------------------------------
+   UI-components.
+-------------------------------------------------------------------------------------------------------------------*/
+
+.matrix-helper {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.matrix {
+    padding: 10px;
+    border-left: 2px solid red;
+    /* For visualization */
+    border-right: 2px solid red;
+    /* For visualization */
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 10vh;
+
+}
+
+.matrix-input {
+    margin: 10px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+
+}
+
+#btnAccion-incrementarDimension {
+    margin-right: 10px;
+}
+
+#btnAccion-decrementarDimension {
+    margin-left: 10px;
+}
+
+#inputNumber {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+#btnAccion-factorizar {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+#btnAccion-descomponer {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+#txtResultado {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    resize: none;
+}
+
+
+/*---------------------------------------------*/
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    display: inline-block;
+    position: relative;
+}
+
+.menu ul li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.menu ul li:hover > .submenu-content {
+    display: block;
+}
+
+.submenu-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.submenu-content li {
+    display: block;
+}
+
+.submenu-content li a {
+    padding: 10px 20px;
+    color: #333;
+}
+
+.submenu-content li:hover {
+    background-color: #ddd;
+}
