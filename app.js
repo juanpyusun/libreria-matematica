@@ -107,7 +107,7 @@ function descomponerToArrayWithDictionary(polinomio){
 
 function invocarUIFactorizar() {
     let message = `<div class="row">
-                        <input type="number" id="inputNumber" placeholder="Ingrese una numero">
+                        <input type="number" id="inputNumber" placeholder="120">
                         <button id="btnAccion-factorizar">Factorizar</button>
                     </div>
                     <textarea id="txtResultado"></textarea>`;
@@ -115,7 +115,7 @@ function invocarUIFactorizar() {
 }
 function invocarUIDescomponer() {
     let message = `<div class="row">
-                        <input type="text" id="inputNumber" placeholder="Ingrese una expresión">
+                        <input type="text" id="inputNumber" placeholder="4x^2-2x+10">
                         <button id="btnAccion-descomponer">Descomponer</button>
                     </div>
                     <textarea id="txtResultado"></textarea>`;
