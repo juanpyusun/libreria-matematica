@@ -55,6 +55,9 @@
     width: 20px;
     height: 20px;
     text-align: center;
+    background-color: #f1f1f1;
+    border: none;
+    padding: 0;
 
 }
 
