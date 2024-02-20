@@ -1,10 +1,16 @@
 /*  VARIABLES Y CONSTANTES -----------------------------------------------------------*/
+import {Polinomio} from '../../lib/polinomio.js';
+
 /*  FUNCIONES -----------------------------------------------------------*/
 /*  INVOCADORES UI -----------------------------------------------------------*/
 /*  LISTENERS -----------------------------------------------------------*/
 document.getElementById('btnAction').addEventListener('click', () => {
     let expression = document.getElementById('inputExpression').value;
-    document.getElementById('result').innerHTML = expression;
+    let p = new Polinomio(expression);
+
+    console.log(p.toMap());
+    console.log(p.orderByAsc());
+    //document.getElementById('result').innerHTML = p.toMap();
 });
 
 /* OTROS COMENTARIOS-----------------------------------------------------------*/
