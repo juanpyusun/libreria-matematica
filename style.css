@@ -9,24 +9,38 @@
     /*border: 1px solid red;*/
 }
 
-.container {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-content: center;   
-    height: 100vh;
-    background-color: transparent;
-    
-}
-.container.has-factorizar {
-    /* Estilos que deseas aplicar cuando el contenedor tiene un nieto con id factorizar */
-    background-color: lightblue;
+:root{
+    /* Background color */
+   --dark-color: #0f0e17;
+
+   /* Text color */
+   --light-color: #a7a9be;
+   --light-white: #fffffe;
+
+   /* Links color */
+   --primary-color: ##ff8906;
+
+   /* Button color */
+   --secondary-color: #e53170;
+
+
+   border: 1px solid red;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
 /*-------------------------------------------------------------------------------------------------------------------
    UI-components.
 -------------------------------------------------------------------------------------------------------------------*/
+.container{
+    display: flex;
+    gap: 2%;
+    justify-content: space-between;
+}
 
 .matrix-helper {
     display: flex;
@@ -47,17 +61,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    margin-top: 20vh; 
-    padding: 0;
-
+    margin-top: 20vh;
 }
+
 .row:has(> .matrix-input) {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 0; 
-    padding: 0;
 }
 
 .matrix-input {
@@ -65,63 +76,34 @@
     width: 20px;
     height: 20px;
     text-align: center;
-    background-color: #f1f1f1;
+    background-color: var(--light-white);
     border: none;
-    padding: 0;
-
-}
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    margin: 0vw 2vw;
 }
 
-#btnAccion-incrementarDimension {
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
     margin-right: 10px;
 }
 
-#btnAccion-decrementarDimension {
-    margin-left: 10px;
+header {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 10px 0;
 }
 
-#inputNumber {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 25vw;
-}
-
-#txtResultado {
-    text-align: center;
-    height: 100%;
-    width: 100%;
-    background-color: transparent;
-    border: none;
-    resize: none;
-}
-
-.menuNav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f4f4f4;
-}
-.menuNav ul {   /* los ul dentro de una clase llamada menuNav */
+nav ul {
     list-style-type: none;
-    padding: 0;
 }
 
-.menuNav ul li { /* los li dentro de un ul dentros de una clase llamada menuNav */
-    display: inline-block; /* Para que los elementos se muestren en línea */
-    margin: 0 5vw; /* Para dar un margen a los elementos */
+nav ul li {
+    display: inline;
+    margin-right: 20px;
 }
 
-.menuNav ul li a { /* los a dentro de un li dentro de un ul dentro de una clase llamada menuNav */
-    text-decoration: none;  /* Para quitar el subrayado de los enlaces */
-    color: #333; /* Color del texto */
+nav ul li a {
+    color: var(--light-white);
+    text-decoration: none;
 }
 
 #imgLandingPage{
@@ -129,4 +111,48 @@ button {
     height: 30%;
     position:absolute;
     top: 30vh;
+}
+
+section {
+    float: left;
+    width: 200px;
+    background-color:var(--light-white);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: var(--dark-color);
+    color: var(--light-white);
+    border: none;
+    cursor: pointer;
+}
+/*
+#btnHelp{
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+*/
+
+footer {
+    background-color: var(--dark-color);
+    color: var(--light-white);
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
