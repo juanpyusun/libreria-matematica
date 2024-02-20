@@ -8,11 +8,17 @@
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="menuNav">
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Acerca de</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li id="link-index">
+                    <a href="index.html">Index</a>
+                </li>
+                <li id="link-factorizacion">
+                    <a href="#">Portfolio</a>
+                </li>
+                <li id="link-descomposicion">
+                    <a href="pages\calculator\calculator.html">Calculadora</a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -35,6 +41,6 @@
     <footer>
         <p>Algoritmos Matematicos</p>
     </footer>
-    <script  src="calculator.js"></script>
+    <script  type="module" src="calculatorController.js"></script>
 </body>
 </html>
