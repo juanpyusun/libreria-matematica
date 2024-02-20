@@ -56,6 +56,13 @@ function factorizar(numero) {
     }
     return resultado;
 }
+function factorizarToString(numero) {
+    let message = factorizar(numero);
+    message = message.map((element) => {
+        return "  " + element + "  ";
+    });
+    return message;
+}
 
 function descomponer(polinomio) {
     // Expresión regular para encontrar términos
@@ -111,6 +118,11 @@ function invocarUIFactorizar() {
                         <input type="number" id="inputNumber" placeholder="120">
                         <button id="btnAccion-factorizar">Factorizar</button>
                     </div>
+                    <div class="row">
+                        <button id="btnAccion-esPrimo">¿Primo?</button>
+                        <button id="btnAccion-esPerfecto">Perfecto?</button>
+                        <button id="btnAccion-esPrimo">¿Primo?</button>
+                    </div>
                     <textarea id="txtResultado"></textarea>`;
     return message;
 }
@@ -148,10 +160,7 @@ document.getElementById("link-factorizacion").addEventListener("click", function
 
     document.getElementById("btnAccion-factorizar").addEventListener("click", () => {
         let numero = document.getElementById("inputNumber").value;
-        let message = factorizar(numero);
-        message = message.map((element) => {
-            return "  " + element + "  ";
-        });
+        let message = factorizarToString(numero);
         document.getElementById("txtResultado").innerHTML = message;
     });
 
@@ -159,6 +168,7 @@ document.getElementById("link-factorizacion").addEventListener("click", function
         document.getElementById("txtResultado").innerHTML = "";
     });
 });
+
 
 /* Listener click en link descomposicion*/
 document.getElementById("link-descomposicion").addEventListener("click", function () {
@@ -197,3 +207,4 @@ document.getElementById("link-matrix").addEventListener("click", function () {
         reducirDimension('A');
     });
 });
+
