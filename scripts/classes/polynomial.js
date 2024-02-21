@@ -1,46 +1,58 @@
-export class Polinomio {
+export class Polynomial {
 
-    constructor(polinomio) {
-        // Expresión regular para encontrar términos y seprarlos en un arreglo
+    /**
+     * Creates a Polynomial object.
+     * @param {string} polynomial - The polynomial expression as a string.
+     */
+    constructor(polynomial) {
+        // Expresión regular para encontrar términos y separarlos en un arreglo
         let regex = /\s?([+-])\s?/g;
-        let polinomioAsArray = polinomio.replace(regex, (match, group1) => group1 === '-' ? ' -' : ' ').split(/\s+/);
+        let polynomialAsArray = polynomial.replace(regex, (match, group1) => group1 === '-' ? ' -' : ' ').split(/\s+/);
 
         // Eliminar el primer elemento si es un string vacío (esto sucede si el polinomio empieza con un sign negativo)
-        if (polinomioAsArray[0] === "") {
-            polinomioAsArray.shift();
+        if (polynomialAsArray[0] === "") {
+            polynomialAsArray.shift();
         }
 
         // Asignar el arreglo de términos al objeto de la clase
-        this.polinomio = polinomioAsArray;
+        this.polynomial = polynomialAsArray;
     }
 
+    /**
+     * Returns the degree of the polynomial.
+     * @returns {number} The degree of the polynomial.
+     */
     deg(){
-        let pMap = this.toMap();
-        let max = 0;
-        for (let i = 0; i < pMap.length; i++) {
-            if (pMap[i].exponent > max) {
-                max = pMap[i].exponent;
+        let polynomialAsMap = this.toMap();
+        let maxDeg = 0;
+        for (let i = 0; i < polynomialAsMap.length; i++) {
+            if (polynomialAsMap[i].exponent > maxDeg) {
+                maxDeg = polynomialAsMap[i].exponent;
             }
         }
-        return max;
+        return maxDeg;
     }
 
+    /**
+     * Returns a description of the polynomial.
+     * @returns {string} The description of the polynomial.
+     */
     describe() {
         let message = "";
         let p = this.orderByAsc();
-        message += "-->DESCRIPCION DEL POLINOMIO:\n";
-        message += `Maximo Grado: ${p.deg()}\n`;
+        message += "-->DESCRIPCIÓN DEL POLINOMIO:\n";
+        message += `Máximo Grado: ${p.deg()}\n`;
         message += `Nombre según su grado: ${p.classifyByDeg()}\n`;
         message += `Cantidad de términos: ${p.toMap().length}\n`;
-        message += `Nombre segun su cantidad de términos: ${p.classifyByTerms()}\n`;
+        message += `Nombre según su cantidad de términos: ${p.classifyByTerms()}\n`;
         if(p.toMap()[0].exponent === 0 && p.toMap()[0].sign === "+"){
-            message += `Termino independiente: ${p.toMap()[0].coefficient}\n`;
+            message += `Término independiente: ${p.toMap()[0].coefficient}\n`;
         }
         else if(p.toMap()[0].exponent === 0 && p.toMap()[0].sign === "-"){
-            message += `Termino independiente: ${p.toMap()[0].sign}${p.toMap()[0].coefficient}\n`;
+            message += `Término independiente: ${p.toMap()[0].sign}${p.toMap()[0].coefficient}\n`;
         }
         else{
-            message += "Termino independiente: No tiene\n";
+            message += "Término independiente: No tiene\n";
         }
 
         message += "--------------------------------\n";
@@ -54,6 +66,10 @@ export class Polinomio {
         return message;
     }
 
+    /**
+     * Classifies the polynomial by its degree.
+     * @returns {string} The classification of the polynomial by its maximum degree.
+     */
     classifyByDeg() {
         let deg = this.deg();
         if (deg === 0) {
@@ -73,6 +89,10 @@ export class Polinomio {
         }
     }
 
+    /**
+     * Classifies the polynomial by the number of terms.
+     * @returns {string} The classification of the polynomial by its number of terms.
+     */
     classifyByTerms() {
         let pMap = this.toMap();
 
@@ -104,43 +124,57 @@ export class Polinomio {
         // Integrando ando
     }
 
+    /**
+     * Orders the polynomial in ascending order based on the exponent of each term.
+     * @returns {Polynomial} The polynomial object with terms ordered in ascending order.
+     */
     orderByAsc() {
-        let pMap = this.toMap();
+        let polynomialAsMap = this.toMap();
 
-        for (let i = 0; i < pMap.length; i++) {
-            for (let j = 0; j < pMap.length; j++) {
-                if (pMap[i].exponent < pMap[j].exponent) {
-                    let temp = pMap[i];
-                    pMap[i] = pMap[j];
-                    pMap[j] = temp;
+        for (let i = 0; i < polynomialAsMap.length; i++) {
+            for (let j = 0; j < polynomialAsMap.length; j++) {
+                if (polynomialAsMap[i].exponent < polynomialAsMap[j].exponent) {
+                    let temp = polynomialAsMap[i];
+                    polynomialAsMap[i] = polynomialAsMap[j];
+                    polynomialAsMap[j] = temp;
                 }
             }
         }
-        return Polinomio.toPolynomial(pMap);
+        return Polynomial.toPolynomial(polynomialAsMap);
     }
 
+    /**
+     * Orders the polynomial in descending order based on the exponent of each term.
+     * @returns {Polynomial} The polynomial object with terms ordered in descending order.
+     */
     orderByDesc() {
-        let pMap = this.toMap();
-        for (let i = 0; i < pMap.length; i++) {
-            for (let j = 0; j < pMap.length; j++) {
-                if (pMap[i].exponent > pMap[j].exponent) {
-                    let temp = pMap[i];
-                    pMap[i] = pMap[j];
-                    pMap[j] = temp;
+        let polynomialAsMap = this.toMap();
+        for (let i = 0; i < polynomialAsMap.length; i++) {
+            for (let j = 0; j < polynomialAsMap.length; j++) {
+                if (polynomialAsMap[i].exponent > polynomialAsMap[j].exponent) {
+                    let temp = polynomialAsMap[i];
+                    polynomialAsMap[i] = polynomialAsMap[j];
+                    polynomialAsMap[j] = temp;
                 }
             }
         }
-        return Polinomio.toPolynomial(pMap);
+        return Polinomio.toPolynomial(polynomialAsMap);
     }
 
+    /**
+     * Converts the polynomial to an array of dictionaries representing each term.
+     * Each dictionary contains the sign, coefficient, variable, and exponent of the term.
+     * If no variable is present in a term, the default variable "x" is used.
+     * @returns {Array} An array of dictionaries representing each term of the polynomial.
+     */
     toMap() {
         // se usara por defecto la variable x
         const VAR_TEMP = "x";
 
         // Crear un arreglo de diccionarios con los elementos de cada termino, venimos de un array de strings y
-        // y ahora se devolvera un array de objetos con la forma {sign: '', coefficient: '', variable: '', exponent: ''}
-        let terminos = [];
-        for (let termino of this.polinomio) {
+        // y ahora se devolverá un array de objetos con la forma {sign: '', coefficient: '', variable: '', exponent: ''}
+        let terms = [];
+        for (let term of this.polynomial) {
             let dictionary = {
                 sign: '',
                 coefficient: '',
@@ -149,38 +183,47 @@ export class Polinomio {
             };
 
             // Determinar el sign del término
-            let sign = termino[0] === '-' ? '-' : '+';
+            let sign = term[0] === '-' ? '-' : '+';
             dictionary.sign = sign;
 
             // Determinar el coefficient del término
-            let coefficientMatch = termino.match(/[+-]?\d+/);
+            let coefficientMatch = term.match(/[+-]?\d+/);
 
             let coefficient = coefficientMatch=== null ?  1 : Math.abs(coefficientMatch[0]);
             dictionary.coefficient = coefficient;
             dictionary.coefficient = coefficient;
 
             // [FALTA]: implementar reconocimiento para varias variables, mientras tanto siempre se usara x
-            let variableMatch = termino.match(/[a-zA-Z]/); // Si no existe la variable se usara este resultado
+            let variableMatch = term.match(/[a-zA-Z]/); // Si no existe la variable se usara este resultado
             dictionary.variable = VAR_TEMP; // Exista o no variable, sera VAR_TEMP
 
             //  Determinar el exponent del término
-            let exponentMatch = termino.match(/\^(\d+)/);
+            let exponentMatch = term.match(/\^(\d+)/);
             let exponent = exponentMatch ? exponentMatch[1] : 1;
             exponent = variableMatch ? exponent : 0;
             dictionary.exponent = parseInt(exponent);
 
             // Agregar el diccionario al arreglo de términos
-            terminos.push(dictionary);
+            terms.push(dictionary);
         }
 
-        return terminos;
+        return terms;
     }
 
+    /**
+     * Returns a string representation of the polynomial.
+     * @returns {string} The string representation of the polynomial.
+     */
     toString() {
-        let polinomioToString = this.polinomio;
-        return polinomioToString.join(", ");
+        let polynomialToString = this.polynomial;
+        return polynomialToString.join(", ");
     }
 
+    /**
+     * Converts a polynomial represented as a map to a polynomial object.
+     * @param {Array} polynomialAsMap - The polynomial represented as an array of dictionaries representing each term of the polynomial.
+     * @returns {Polinomio} - The polynomial object.
+     */
     static toPolynomial(polynomialAsMap) {
         let polynomialAsArray = [];
         for (let termino of polynomialAsMap) {
@@ -196,17 +239,3 @@ export class Polinomio {
         return p;
     }
 }
-/*
-//SOBRECARGA DE METODOS
-function CatStrings(p1, p2, p3)
-{
-  var s = p1;
-  if(typeof p2 !== "undefined") {s += p2;}
-  if(typeof p3 !== "undefined") {s += p3;}
-  return s;
-};
-
-CatStrings("one");        // result = one
-CatStrings("one",2);      // result = one2
-CatStrings("one",2,true); // result = one2true
-*/

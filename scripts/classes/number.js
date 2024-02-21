@@ -3,7 +3,7 @@ export class Number{
     constructor(numero) {
         this.numero = parseInt(numero);
     }
-
+/*
 factorizar(numero) {
     let resultado = [];
     for (let i = 1; i <= numero; i++) {
@@ -20,7 +20,7 @@ factorizarToString(numero) {
     });
     return message;
 }
-
+*/
 
 
 }
