@@ -1,5 +1,5 @@
 /*  VARIABLES Y CONSTANTES ------------------------------------------------------------*/
-import { Polinomio } from '../classes/polynomial.js';
+import { Polynomial } from '../classes/polynomial.js';
 
 /* FUNCIONES --------------------------------------------------------------------------*/
 
@@ -63,7 +63,7 @@ document.getElementById('btnAction').addEventListener('click', () => {
                 break;
             }
 
-            var p = new Polinomio(expression[2]);
+            var p = new Polynomial(expression[2]);
 
             if(expression[1] === "ASC"){
                 document.getElementById('result').innerText = p.orderByAsc();
@@ -74,7 +74,7 @@ document.getElementById('btnAction').addEventListener('click', () => {
             }
             break;
         case "DESCRIBIR":
-            var p = new Polinomio(expression[1]);
+            var p = new Polynomial(expression[1]);
             document.getElementById('result').innerText = p.describe();     
             break;
         default:

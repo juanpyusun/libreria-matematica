@@ -158,7 +158,7 @@ export class Polynomial {
                 }
             }
         }
-        return Polinomio.toPolynomial(polynomialAsMap);
+        return Polynomial.toPolynomial(polynomialAsMap);
     }
 
     /**
@@ -222,7 +222,7 @@ export class Polynomial {
     /**
      * Converts a polynomial represented as a map to a polynomial object.
      * @param {Array} polynomialAsMap - The polynomial represented as an array of dictionaries representing each term of the polynomial.
-     * @returns {Polinomio} - The polynomial object.
+     * @returns {Polynomial} - The polynomial object.
      */
     static toPolynomial(polynomialAsMap) {
         let polynomialAsArray = [];
@@ -235,7 +235,7 @@ export class Polynomial {
             let terminoToString = sign + (coefficient === 1 ? "" : coefficient) + (exponent > 0 ? variable : "") + (exponent > 1 ? "^" + exponent : "");
             polynomialAsArray.push(terminoToString);
         }
-        let p = new Polinomio(polynomialAsArray.join(""));
+        let p = new Polynomial(polynomialAsArray.join(""));
         return p;
     }
 }

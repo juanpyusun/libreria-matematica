@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="../styles/normalize.min.css">
     <link rel="stylesheet" href="../styles/style.css">
 </head>
+
 <body>
     <header>
         <nav class="menuNav">
@@ -23,33 +25,117 @@
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <section>
+
+    <main class="container">
+        <!--START SECTION TOOLBAR-->
+        <section id="sectionToolBar">
             <h2>Input</h2>
             <select id="opciones">
                 <option value="1" selected>Text</option>
                 <option value="2">Math</option>
             </select>
-    
         </section>
-    
-        <main>
-            <h1>Calculadora de Matemáticas Avanzada Online</h1>
+        <!--END SECTION TOOLBAR-->
+
+        <!--START SECTION CALCULATOR-->
+        <section id="sectionCalculator">
+            <h1>Calculadora</h1>
             <div class="formulario">
                 <input type="text" id="inputExpression" value="" placeholder="Input your command...">
                 <button id="btnAction">=</button>
             </div>
+            <div id="controlBar"></div>
             <div id="result"></div>
-        </main>
-    
-        <section>
-            <button id="btnHelp">Help</button>
         </section>
-    </div>
+        <!--END SECTION CALCULATOR-->
+
+        <!--START SECTION HELP-->
+        <section id="sectionHelp">
+            <details>
+                <summary>Temario [AYUDA]</summary>
+                <ol>
+                    <li>
+                        <details>
+                            <summary>Aritmetica</summary>
+                            <ul>
+                                <li>a</li>
+                                <li>b</li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Algebra</summary>
+                            <ul>
+                                <li>a</li>
+                                <li>b</li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Precalculo</summary>
+                            <ul>
+                                <li>a</li>
+                                <li>b</li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Calculo Diferencial</summary>
+                            <ul>
+                                <li>a</li>
+                                <li>b</li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Calculo Integral</summary>
+                            <ul>
+                                <li>a</li>
+                                <li>b</li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Calculo Multivariable</summary>
+                            <ul>
+                                <li>a</li>
+                                <li>b</li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Ecuaciones Diferenciales</summary>
+                            <ul>
+                                <li>a</li>
+                                <li>b</li>
+                            </ul>
+                        </details>
+                    </li>
+                    <li>
+                        <details>
+                            <summary>Algebra Lineal</summary>
+                            <ul>
+                                <li>a</li>
+                                <li>b</li>
+                            </ul>
+                        </details>
+                    </li>
+                </ol>
+            </details>
+        </section>
+        <!--END SECTION HELP-->
+    </main>
 
     <footer>
         <p>Algoritmos Matematicos</p>
     </footer>
-    <script  type="module" src="../scripts/controllers/calculatorController.js"></script>
+    <script type="module" src="../scripts/controllers/calculatorController.js"></script>
 </body>
+
 </html>
