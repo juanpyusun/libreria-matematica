@@ -1,27 +1,45 @@
-/*  VARIABLES Y CONSTANTES -----------------------------------------------------------*/
-import { Polinomio } from '../../lib/polinomio.js';
+/*  VARIABLES Y CONSTANTES ------------------------------------------------------------*/
+import { Polinomio } from '../classes/polynomial.js';
 
-/*  FUNCIONES -----------------------------------------------------------*/
+/* FUNCIONES --------------------------------------------------------------------------*/
+
+/**
+ * Checks if the input expression is empty.
+ *
+ * @param {string} expression - The input expression to check.
+ * @returns {boolean} Returns true if the expression is empty, otherwise false.
+ */
 function isInputExpressionEmpty(expression) {
     return expression === "";
 }
 
+/**
+ * Checks if the input expression is valid.
+ *
+ * @param {string} expression - The input expression to validate.
+ * @returns {boolean} - True if the expression is valid, false otherwise.
+ * @todo Implementar validación de expresión.
+ */
 function isInputExpressionValid(expression) {
-    //[FALTA]: implementar validación de expresión
     return false;
 }
 
+/**
+ * Cleans the input expression by converting all elements to uppercase, except the last element.
+ * 
+ * @param {string} expression - The input expression to be cleaned.
+ * @returns {string} - The cleaned expression.
+ */
 function cleanInputExpression(expression) {
     let expressionTEMP = expression.split(" ");
     for (let i = 0; i < expressionTEMP.length - 1; i++) {
-        //poniendo la entrada en mayusculas excepto el ultimo elemento que suele ser el polinomio
         expressionTEMP[i] = expressionTEMP[i].toUpperCase();
     }
     expression = expressionTEMP.join(" ");
     return expression;
 }
-/*  INVOCADORES UI -----------------------------------------------------------*/
-/*  LISTENERS -----------------------------------------------------------*/
+
+/*  LISTENERS -------------------------------------------------------------------------*/
 document.getElementById('btnAction').addEventListener('click', () => {
     let expression = document.getElementById('inputExpression').value;
 
@@ -64,14 +82,6 @@ document.getElementById('btnAction').addEventListener('click', () => {
     }
 });
 
-/* OTROS COMENTARIOS-----------------------------------------------------------*/
-/*
-const operacion = (a,b,op) => { 
-    return op(a, b);
-}
-console.log(operacion(1, 3, suma)); // Output: 4
-const suma = (a, b) => {
-    return a + b;
-}
-*/
+/* OTROS COMENTARIOS-------------------------------------------------------------------*/
+
 
