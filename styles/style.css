@@ -99,7 +99,7 @@ section {
     display: flex;
     flex-direction: row;
     position: relative;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 input[type="text"] {
@@ -107,9 +107,13 @@ input[type="text"] {
     padding: 10px;
     height: 3rem;
     border-radius: 7px;
+
+
     &:focus{
         outline: none;
     }
+
+
     /*Selecciona que cuando esté focus este elemento
     cambie la propiedad de opacidad a 0 y si tiene texto lo deje así en 0 
     a su elemento adyacente con el id placeHolderInput*/
