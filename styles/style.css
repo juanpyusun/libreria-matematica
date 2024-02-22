@@ -109,6 +109,8 @@ input[type="text"] {
     border-radius: 7px;
 
 
+    
+
     &:focus{
         outline: none;
     }
